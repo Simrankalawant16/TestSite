@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simran Kalawant — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Simran Kalawant: projects, skills, contact." />
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#4f46e5;
+      --glass: rgba(255,255,255,0.6);
+      --radius:12px;
+      --shadow: 0 6px 18px rgba(16,24,40,0.08);
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220;
+      --card:#071022;
+      --muted:#9aa4b2;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.03);
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:var(--muted);}
+    .container{max-width:1100px;margin:40px auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:var(--shadow)}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:inherit;text-decoration:none;font-weight:600}
+    .nav-right{display:flex;gap:10px;align-items:center}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600;box-shadow:var(--shadow)}
+    .ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center}
+    .card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    h1{margin:0;font-size:28px;color:var(--accent)}
+    p.lead{margin-top:8px;color:var(--muted);line-height:1.5}
+
+    .profile{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .avatar{width:160px;height:160px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:700;color:white;background:linear-gradient(135deg,#06b6d4,var(--accent));box-shadow:var(--shadow)}
+    .info{width:100%}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{padding:8px 10px;border-radius:999px;background:var(--glass);font-weight:600;color:var(--muted);}
+
+    /* Projects */
+    .section{margin-top:28px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{padding:16px;border-radius:12px;background:linear-gradient(180deg,var(--card),rgba(0,0,0,0.02));cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+    .project:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.08)}
+    .proj-title{font-weight:700;color: #0f172a;margin:0 0 6px}
+    .proj-desc{font-size:14px;margin:0;color:var(--muted)}
+
+    /* Contact */
+    .form-row{display:flex;gap:10px}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--muted)}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      nav{display:none}
+    }
+
+    /* modal */
+    .overlay{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px}
+    .overlay.show{display:flex}
+    .modal{width:100%;max-width:880px;background:var(--card);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+    .modal .close{float:right;background:transparent;border:0;font-size:20px;cursor:pointer}
+
+    /* subtle animations */
+    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .6s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body data-theme="light">
+  <div class="container">
+    <header class="fade-up">
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="font-weight:800;color:var(--accent)">Simran</div>
+          <div style="font-size:12px;color:var(--muted)">Full-stack developer &amp; designer</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="https://forms.gle/D2Adi9jHRfeqYUwa7">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <button class="ghost" id="themeToggle" title="Toggle theme">Toggle</button>
+        <a class="btn" href="#contact">Hire me</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card fade-up">
+          <h1>Hi, I'm Simz — I build delightful interfaces and solid backends.</h1>
+          <p class="lead">I specialise in web apps using .NET, JavaScript and modern CSS. I enjoy turning complex problems into clean, user-friendly products.</p>
+
+          <div style="display:flex;gap:14px;margin-top:18px">
+            <a class="btn" href="#projects">See projects</a>
+            <a class="ghost" href="#contact">Get in touch</a>
+          </div>
+
+          <div style="display:flex;gap:18px;margin-top:18px;align-items:center">
+            <div>
+              <div style="font-weight:800;color:#0f172a">5+</div>
+              <div style="font-size:12px;color:var(--muted)">Years experience</div>
+            </div>
+            <div>
+              <div style="font-weight:800;color:#0f172a">20+</div>
+              <div style="font-size:12px;color:var(--muted)">Projects shipped</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card profile fade-up">
+          <div class="avatar">SK</div>
+          <div class="info">
+            <div style="font-weight:800;color:#0f172a">Simran Kalawant</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:6px">Full-stack developer — .NET & JavaScript</div>
+
+            <div class="skills">
+              <div class="chip">ASP.NET</div>
+              <div class="chip">Web Forms</div>
+              <div class="chip">JavaScript</div>
+              <div class="chip">SQL Server</div>
+              <div class="chip">HTML & CSS</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects" class="section">
+        <h2 style="margin:0 0 12px;color:var(--accent)">Projects</h2>
+        <p style="margin:0 0 16px;color:var(--muted)">A selection of projects demonstrating full-stack work, integrations and UI polish.</p>
+
+        <div class="grid">
+          <!-- Project 1 -->
+          <div class="project" data-id="1" tabindex="0">
+            <h3 class="proj-title">Invoice Processor</h3>
+            <p class="proj-desc">Bulk invoice upload, validation engine and audit trail — built with .NET Web Forms + SQL Server.</p>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project" data-id="2" tabindex="0">
+            <h3 class="proj-title">Task Scheduler</h3>
+            <p class="proj-desc">Background job scheduling and retry logic using Hangfire and resilient API calls.</p>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project" data-id="3" tabindex="0">
+            <h3 class="proj-title">Customer Portal</h3>
+            <p class="proj-desc">Responsive customer portal with maker-checker workflows and secure file upload.</p>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project" data-id="4" tabindex="0">
+            <h3 class="proj-title">UI Kit & Components</h3>
+            <p class="proj-desc">Reusable UI components, design tokens and documentation site for internal teams.</p>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project" data-id="5" tabindex="0">
+            <h3 class="proj-title">Realtime Dashboard</h3>
+            <p class="proj-desc">Live charts and notifications for operational metrics with websockets and caching.</p>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project" data-id="6" tabindex="0">
+            <h3 class="proj-title">Automation Scripts</h3>
+            <p class="proj-desc">Powerful automation scripts for ETL, backups and deployment orchestration.</p>
+          </div>
+        </div>
+      </section>
+    
+    </main>
+  </div>
+
+  <!-- Modal for project details -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="closeModal" aria-label="Close">✕</button>
+      <h3 id="modalTitle" style="margin-top:6px;color:var(--accent)"></h3>
+      <p id="modalBody" style="color:var(--muted)"></p>
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <a class="btn" id="viewDemo" href="#">View demo</a>
+        <a class="ghost" id="viewCode" href="#">View code</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small helpers and interactivity
+    const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
+
+    // Theme toggle (persist in localStorage)
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if(stored) body.setAttribute('data-theme', stored);
+    themeToggle.addEventListener('click', ()=>{
+      const cur = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', cur);
+      localStorage.setItem('theme', cur);
+    });
+
+    // Project modal content
+    const projects = document.querySelectorAll('.project');
+    const overlay = document.getElementById('overlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const viewDemo = document.getElementById('viewDemo');
+    const viewCode = document.getElementById('viewCode');
+    const closeModal = document.getElementById('closeModal');
+
+    const data = {
+      1:{title:'Invoice Processor', body:'A robust bulk invoicing system with file validation, database staging and detailed audit logs. Implemented using Web Forms, stored procedures and a queue-based import.' , demo:'#', code:'#'},
+      2:{title:'Task Scheduler', body:'Background jobs powered by Hangfire. Includes retry logic, monitoring dashboard and graceful shutdown behaviors.', demo:'#', code:'#'},
+      3:{title:'Customer Portal', body:'Secure portal with maker-checker flows. Role-based UI and document uploads with virus scanning and file-size limits.', demo:'#', code:'#'},
+      4:{title:'UI Kit & Components', body:'Design system with tokens, shared components and Storybook for documentation — easy to re-use across projects.', demo:'#', code:'#'},
+      5:{title:'Realtime Dashboard', body:'Operational dashboard with websockets, rate limiting and caching layers for performance under load.', demo:'#', code:'#'},
+      6:{title:'Automation Scripts', body:'Shell and PowerShell scripts for ETL and deployment; idempotent and logged for auditability.', demo:'#', code:'#'}
+    };
+
+    projects.forEach(p=>{
+      p.addEventListener('click', ()=> openProject(p.dataset.id));
+      p.addEventListener('keydown',(e)=>{ if(e.key==='Enter') openProject(p.dataset.id)});
+    });
+
+    function openProject(id){
+      const item = data[id];
+      modalTitle.textContent = item.title;
+      modalBody.textContent = item.body;
+      viewDemo.href = item.demo;
+      viewCode.href = item.code;
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden','false');
+      closeModal.focus();
+    }
+    function close(){ overlay.classList.remove('show'); overlay.setAttribute('aria-hidden','true'); }
+    closeModal.addEventListener('click', close);
+    overlay.addEventListener('click',(e)=>{ if(e.target===overlay) close(); });
+
+    // Contact form simple handling
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){ alert('Please fill all fields.'); return; }
+      // In a real site, send via fetch to an API endpoint. Here we just simulate success.
+      alert('Thanks, ' + (name||'there') + '! Your message has been received.');
+      contactForm.reset();
+    });
+
+    // small accessibility improvement: close modal with Esc
+    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') close(); });
+  </script>
+</body>
+</html>
